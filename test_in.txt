@@ -1,0 +1,61 @@
+G1 = {a, b, c | <a, b>}
+G2 = a, b, c | <a, b>
+G2 = {a, b, c | <a, b>
+G2 = a, b, c | <a, b>}
+G2 = {{a, b, c | <a, b>}}
+G2 = {a, b, c <a,b>, <b,a>}
+G2 = {a, b, c,   <a,b>, <b,a>}
+G2 = {a, b, a, c | <a, b>}
+G2={a,b,c|<a,b>,<a,c>,<a,b>,<a,c>}
+G2 = { a|<a,a> }
+G2 = {a, b | <invalid,a>}
+G2 = {a, b | <a,edge>}
+G2={inv@l!d, n@me | <inv@l!d, n@me>}
+G2={[]], name | <[]], name>}
+G2={[[], name | <[]], name>}
+G2={[[], name | <[]], name>}
+G2={a, b| a,b}
+G2={a, b| a,b>}
+G2={a, b| <a,b}
+print(G2)
+edgeLess = {a,b}
+semicolons={[;;;[;;;];;;]}
+semicolons={[;;;;];;}
+print(semicolons)
+edgeLess2={a,b|}
+who
+delete(semicolons)
+who
+reset
+who
+quit={}
+keywords = {who, reset, quit, save, load, print, delete | <who, reset>}
+print(keywords)
+G0={|}
+G00={}
+1graph={}
+b@dGr*ph={}
+copyX0 = X0
+G1={x1, x2 | <x1, x2>}
+copyG1=G1
+print(copyG1)
+comp = !G1
+print(comp)
+invalidCommand
+G2= {x1, x2, x3 | <x2, x3>}
+G3={y1, y2, y3}
+G4 = {y1, y4, y5 | <y4, y5>}
+out1=G1+G2*G4
+print(out1)
+print
+delete
+save
+load
+who()
+reset()
+quit()
+save(G1, g1.bin)
+print(load(g1.bin))
+delete({a, b, c | <a,b>} ^ !{x, y, z})
+save(load(g1.bin) - {x1, a, b}, g2.gc)
+print(load(g2.gc))

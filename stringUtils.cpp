@@ -1,8 +1,7 @@
-#include "stringutils.h"
+#include "stringUtils.h"
 #include <algorithm>
 #include <cctype>
 #include <regex>
-#include <utility>
 
 std::vector<string> stringUtils::split(string str, const string& delim) {
     std::vector<string> out;
@@ -15,14 +14,12 @@ std::vector<string> stringUtils::split(string str, const string& delim) {
     return out;
 }
 
-std::pair<string, string> stringUtils::seperate(const string& str, char delim) {
+std::vector<std::string> stringUtils::partition(const string& str, const std::string& delim) {
     unsigned long index = str.find(delim);
-    if(index == string::npos) {
-        throw std::invalid_argument("The delimiter was not found in the string.");
-    } else if(index != str.rfind(delim)) {
-        throw std::invalid_argument("The delimiter is in the string more than one time.");
+    if(str.empty() || index == string::npos) {
+        return {str, "", ""};
     }
-    return std::pair<string, string>(str.substr(0, index), str.substr(index + 1));
+    return {str.substr(0, index), delim, str.substr(index + 1)};
 }
 
 string stringUtils::strip(string str) {
@@ -30,18 +27,16 @@ string stringUtils::strip(string str) {
 }
 
 string stringUtils::lstrip(string str) {
-    string::const_iterator end = find_if_not(str.begin(), str.end(), isspace);
+    auto end = find_if_not(str.begin(), str.end(), isspace);
     int index = end - str.begin();
     str.erase(0, index);
     return str;
 }
 
 string stringUtils::rstrip(string str) {
-    string::const_reverse_iterator end = find_if_not(str.rbegin(), str.rend(), isspace);
-    int index = str.rend() - end;
-    if(index < (int) str.length() - 1) {
-        str.erase( index + 1, str.length());
-    }
+    auto end = find_if_not(str.rbegin(), str.rend(), isspace);
+    unsigned index = str.rend() - end;
+    str.erase( index + 1);
     return str;
 }
 
@@ -51,20 +46,8 @@ string stringUtils::rstrip(string str) {
  * @return  A string with the matched, non-grouped whitespace removed
  */
 string stringUtils::removeWhitespace(const string& str) {
-    std::regex re("(\\w\\s+\\w)|\\s+");
+    std::regex re(R"((\w\s+\w)|\s+)");
     return std::regex_replace(str, re, "$1");
-}
-
-string stringUtils::toUpper(const string& str) {
-    string out;
-    std::transform(str.begin(), str.end(), out.begin(), toupper);
-    return out;
-}
-
-string stringUtils::toLower(const string& str) {
-    string out;
-    std::transform(str.begin(), str.end(), out.begin(), tolower);
-    return out;
 }
 
 bool stringUtils::startsWith(const string& str, const string& prefix) {
@@ -73,5 +56,9 @@ bool stringUtils::startsWith(const string& str, const string& prefix) {
 
 bool stringUtils::endsWith(const string& str, const string& suffix) {
     return str.rfind(suffix) == str.length() - suffix.length();
+}
+
+bool isDigit(const string& str) {
+    return std::all_of(str.begin(), str.end(), isdigit);
 }
 

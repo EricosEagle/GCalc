@@ -1,0 +1,83 @@
+Error: 'a, b, c | <a, b>' is not a valid expression.
+Error: '{a, b, c | <a, b>' is not a valid expression.
+Error: 'a, b, c | <a, b>}' is not a valid expression.
+Error: '{a' is not a variable name.
+Error: '{a, b, c <a,b>, <b,a>}' is not a valid expression.
+Error: '<a,b>' is not a valid variable name.
+Error: 'a' cannot be in the graph more than one time!
+Error: 'a b' is already in the graph!
+Error: A node cannot be connected to itself.
+Error: 'invalid' is not a node in the graph.
+Error: 'edge' is not a node in the graph.
+Error: 'inv@l!d' is not a valid variable name.
+Error: '[]]' is not a valid variable name.
+Error: '[[]' is not a valid variable name.
+Error: 'G2={a, b| a,b}' is not a valid expression.
+Error: 'G2={a, b| a,b>}' is not a valid expression.
+Error: 'G2={a, b| <a,b}' is not a valid expression.
+Error: 'G2' is undefined.
+Error: '[;;;;];;' is not a valid variable name
+Error: '1graph' is not a valid variable name.
+Error: 'b@dGr*ph' is not a valid variable name.
+[;;;[;;;];;;]
+$
+edgeLess
+edgeLess2
+G1
+semicolons
+edgeLess
+edgeLess2
+edgeLess2
+G1
+Error: 'quit' is not a valid variable name.
+who
+reset
+quit
+save
+load
+print
+delete
+$
+who reset
+Error: 'X0' is undefined.
+a
+b
+c
+$
+a b
+a
+b
+c
+$
+a c
+b a
+b c
+c a
+c b
+Error: 'invalidCommand' is not a valid command!
+[x1;y1]
+[x1;y4]
+[x1;y5]
+[x2;y1]
+[x2;y4]
+[x2;y5]
+[x3;y1]
+[x3;y4]
+[x3;y5]
+$
+[x1;y4] [x2;y5]
+[x2;y4] [x3;y5]
+Error: 'print' is not a valid command!
+Error: 'delete' is not a valid command!
+Error: 'save' is not a valid command!
+Error: 'load' is not a valid command!
+Error: 'who()' is not a valid command!
+Error: 'reset()' is not a valid command!
+Error: 'quit()' is not a valid command!
+x1
+x2
+$
+x1 x2
+Error: '{a, b, c | <a,b>} ^ !{x, y, z}' is undefined.
+x2
+$

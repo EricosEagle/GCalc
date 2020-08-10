@@ -1,19 +1,26 @@
 CXX = g++
-CPPFLAGS = -std=c++11 -Wall -Werror -pedantic-errors -DNDEBUG
-EXEC = gcalc
+CPPFLAGS = -std=c++11 -Wall -Werror --pedantic-errors -DNDEBUG
 OUT_FLAG = -o
 OBJ_FLAG = -c
-LIB_FLAGS = -L. -lgraph
+PROG = gcalc
 
-${EXEC}: main.cpp graph.a
-	${CXX} ${CPPFLAGS} $^ ${OUT_FLAG} $@
+$(PROG): main.cpp graph/gcalc.h graph/gcalc.cpp stringUtils.o graph.o
+	$(CXX) $(CPPFLAGS) $^ $(OUT_FLAG) $@
 
-graph.o: graph.h graph.cpp
-	${CXX} ${CPPFLAGS} $^ ${OBJ_FLAG}
+graph.o: graph/graph.h graph/graph.cpp
+	$(CXX) $(CPPFLAGS) $^ $(OBJ_FLAG)
 
-# libgraph.a:
+stringUtils.o: stringUtils.h stringUtils.cpp
+	$(CXX) $(CPPFLAGS) $^ $(OBJ_FLAG)
 
-# tar:
+libgraph.a: wrappers.o
+	ar -rs $@ $^
+
+wrappers.o: graph/graph.h graph/graph.cpp swig/wrappers.h swig/wrappers.cpp
+	$(CXX) $(CPPFLAGS) -fPIC $^ $(OBJ_FLAG)
+
+tar:
+	zip gcalc graph/* swig/* graph.i main.cpp Makefile stringUtils.cpp stringUtils.h test_in.txt test_out.txt
 
 clean:
-	rm -rf ${EXEC} *.o
+	rm -rf $(PROG) *.o *.a *.h.gch graph/*.h.gch swig/*.h.gch
